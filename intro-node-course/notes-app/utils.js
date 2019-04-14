@@ -2,4 +2,6 @@ console.log('utils.js')
 
 const name = 'Stats'
 
-module.exports = name
+const add = (a, b) => a + b
+
+module.exports = add
