@@ -17,6 +17,16 @@ yargs.command({
   handler: () => console.log('Removing the note'),
 })
 
+yargs.command({
+  command: 'list',
+  describe: 'List yars notes',
+  handler: () => console.log('Listing out all notes'),
+})
 
+yargs.command({
+  command: 'read',
+  describe: 'Read a note',
+  handler: () => console.log('Reading a note'),
+})
 
 console.log(yargs.argv)
