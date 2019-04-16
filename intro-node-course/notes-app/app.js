@@ -13,9 +13,9 @@ yargs.command({
       describe: 'Note title',
       demandOption: true,
       type: 'string',
-    }
+    },
   },
-  handler: (argv) => console.log('Adding a new note!', argv),
+  handler: (argv) => console.log('Title', argv.title),
 })
 
 yargs.command({
@@ -36,4 +36,4 @@ yargs.command({
   handler: () => console.log('Reading a note'),
 })
 
-console.log(yargs.argv)
+yargs.parse()
