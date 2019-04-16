@@ -8,3 +8,5 @@ const msg = notes()
 console.log(msg)
 
 console.log(format("Success!"))
+
+console.log(process.argv[2])
