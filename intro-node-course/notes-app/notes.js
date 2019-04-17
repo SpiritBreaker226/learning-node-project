@@ -3,11 +3,17 @@ const fs = require('fs')
 const addNote = (title, body) => {
   const notes = loadNotes()
 
-  notes.push({ title, body })
+  const duplicateNotes = notes.filter(note => note.title === title)
 
-  saveNotes(notes)
+  if (duplicateNotes.length === 0) {
+    notes.push({ title, body })
 
-  console.log(notes)
+    saveNotes(notes)
+
+    console.log(`${title} Note Added!`)
+  } else {
+    console.log(`${title} is already in the notes`)
+  }
 }
 
 const notes = () => 'Your notes...'
