@@ -1,3 +1,10 @@
+const addNote = (title, body) => {
+
+}
+
 const notes = () => 'Your notes...'
 
-module.exports = notes
+module.exports = {
+  add: addNote,
+  notes,
+}
