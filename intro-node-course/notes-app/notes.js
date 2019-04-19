@@ -26,15 +26,21 @@ const listNotes = () => {
   })
 }
 
-  notes.forEach(note => {
-    const title = chalk.bgBlack.bold.white.inverse(note.title)
-    const body = chalk.bgBlack.white.inverse(note.body)
-
-    console.log(`${title}\n${body}\n\n`)
-  })
-}
-
 const notes = () => 'Your notes...'
+
+const readNote = (title) => {
+  const notes = loadNotes()
+
+  const note = notes.find(note => note.title === title)
+
+  if(note) {
+    const title = chalk.bgBlack.bold.white.inverse(note.title)
+
+    console.log(`${title}\n${note.body}`)
+  } else {
+    console.log(chalk.red.inverse(`No Note Found`))
+  }
+}
 
 const removeNote = (title) => {
   const notes = loadNotes()
@@ -73,5 +79,6 @@ module.exports = {
   add: addNote,
   list: listNotes,
   notes,
+  read: readNote,
   remove: removeNote,
 }
