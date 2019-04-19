@@ -11,9 +11,9 @@ const addNote = (title, body) => {
 
     saveNotes(notes)
 
-    console.log(`${title} Note Added!`)
+    console.log(chalk.green.inverse(`${title} Note Added!`))
   } else {
-    console.log(`${title} is already in the notes`)
+    console.log(chalk.red.inverse(`${title} is already in the notes`))
   }
 }
 
