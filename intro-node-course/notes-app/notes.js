@@ -18,6 +18,8 @@ const addNote = (title, body) => {
 
 const notes = () => 'Your notes...'
 
+const removeNote = title => console.log(`Removing note ${title}`)
+
 // Private Functions
 
 const loadNotes = () => {
@@ -40,4 +42,5 @@ const saveNotes = (notes) => {
 module.exports = {
   add: addNote,
   notes,
+  remove: removeNote,
 }
