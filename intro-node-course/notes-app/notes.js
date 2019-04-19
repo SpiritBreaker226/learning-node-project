@@ -26,8 +26,6 @@ const listNotes = () => {
   })
 }
 
-const notes = () => 'Your notes...'
-
 const readNote = (title) => {
   const notes = loadNotes()
 
@@ -78,7 +76,6 @@ const saveNotes = (notes) => {
 module.exports = {
   add: addNote,
   list: listNotes,
-  notes,
   read: readNote,
   remove: removeNote,
 }
