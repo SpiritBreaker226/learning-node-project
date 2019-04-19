@@ -18,7 +18,17 @@ const addNote = (title, body) => {
 
 const notes = () => 'Your notes...'
 
-const removeNote = title => console.log(`Removing note ${title}`)
+const removeNote = (title) => {
+  const notes = loadNotes()
+
+  const remainingNotes = notes.filter(note => note.title !== title)
+
+  saveNotes(remainingNotes)
+
+  if (remainingNotes.length !== notes.length) {
+    console.log(`Removing note ${title}`)
+  }
+}
 
 // Private Functions
 
