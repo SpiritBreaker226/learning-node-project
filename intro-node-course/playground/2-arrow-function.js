@@ -1,9 +1,20 @@
 // Function Style
+
 const square = function (x) {
   return x * x
 }
 
+const event = {
+  name: 'Birthday Party',
+  printGustList() {
+    console.log(`Guest list for ${this.name}`)
+  }
+}
+
+event.printGustList()
+
 // Arrow Functions
+
 const willReturnMutipleLinesAndTwoOrMoreArg = (x, y) => {
   const grid = x * y
 
@@ -30,10 +41,3 @@ console.log(willNotReturnSingleLineAndSingleArg(4))
 console.log(willNotReturnSingleLineAndTwoOrMoreArg(5, 6))
 console.log(willReturnSingleLineAndTwoOrMoreArg(7, 8))
 console.log(willReturnMutipleLinesAndTwoOrMoreArg(9, 0))
-
-const event = {
-  name: 'Birthday Party',
-  printGustList: () => console.log(`Guest list for ${this.name}`)
-}
-
-event.printGustList()
