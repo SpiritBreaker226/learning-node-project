@@ -17,6 +17,24 @@ const addNote = (title, body) => {
   }
 }
 
+const listNotes = () => {
+  const notes = loadNotes()
+
+  console.log(chalk.bold.cyan.inverse('Your Notes'))
+
+  notes.forEach(note => {
+    console.log(chalk.bgBlack.bold.white.inverse(note.title))
+  })
+}
+
+  notes.forEach(note => {
+    const title = chalk.bgBlack.bold.white.inverse(note.title)
+    const body = chalk.bgBlack.white.inverse(note.body)
+
+    console.log(`${title}\n${body}\n\n`)
+  })
+}
+
 const notes = () => 'Your notes...'
 
 const removeNote = (title) => {
@@ -54,6 +72,7 @@ const saveNotes = (notes) => {
 
 module.exports = {
   add: addNote,
+  list: listNotes,
   notes,
   remove: removeNote,
 }
