@@ -6,8 +6,19 @@ const square = function (x) {
 
 const event = {
   name: 'Birthday Party',
+  guestList: ['Alex', 'Bob', 'Stan'],
   printGustList() {
     console.log(`Guest list for ${this.name}`)
+
+    // functions do bind this
+    this.guestList.forEach(function (guest) {
+      console.log(`${guest} is attending ${this.name}`)
+    })
+
+    // arrow function do not bind this
+    this.guestList.forEach(guest => (
+      console.log(`${guest} is attending ${this.name}`)
+    ))
   }
 }
 
