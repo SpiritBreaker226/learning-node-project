@@ -33,9 +33,7 @@ console.log(willReturnMutipleLinesAndTwoOrMoreArg(9, 0))
 
 const event = {
   name: 'Birthday Party',
-  printGustList: function () {
-    console.log(`Guest list for ${this.name}`)
-  }
+  printGustList: () => console.log(`Guest list for ${this.name}`)
 }
 
 event.printGustList()
