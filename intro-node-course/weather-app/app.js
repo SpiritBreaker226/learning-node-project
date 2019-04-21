@@ -1,6 +1,6 @@
 const request = require('request')
 
-const url = `https://api.darksky.net/forecast/${process.env.DARK_SKY_API_KEY}/37.8267,-122.4233`
+const url = `https://api.darksky.net/forecast/${process.env.DARK_SKY_API_KEY}/37.8267,-122.4233?units=si`
 
 request({ url, json: true }, (error, res) => {
   const { temperature, precipProbability } = res.body.currently
