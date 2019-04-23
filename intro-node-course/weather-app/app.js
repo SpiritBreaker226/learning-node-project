@@ -21,6 +21,16 @@ request({ url: darkskyUrl, json: true }, (error, res) => {
 })
 
 request({ url: mapboxUrl, json: true }, (error, res) => {
+  if (error) {
+    console.log('Unable to connect to mapping service!')
+
+    return
+  } else if (res.body.features.length === 0) {
+    console.log('Unable to find location')
+
+    return
+  }
+
   const [ longitude, latitude ] = res.body.features[0].center
 
   console.log(`Longitude: ${longitude}, Latitude: ${latitude}`)
