@@ -4,6 +4,16 @@ const darkskyUrl = `https://api.darksky.net/forecast/${process.env.DARK_SKY_API_
 const mapboxUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=${process.env.MAPBOX_API_KEY}`
 
 request({ url: darkskyUrl, json: true }, (error, res) => {
+  if (error) {
+    console.log('Unable to connect to weather service!')
+
+    return
+  } else if (res.body.error) {
+    console.log('Unable to find location')
+
+    return
+  }
+
   const { temperature, precipProbability } = res.body.currently
   const { data } = res.body.daily
 
