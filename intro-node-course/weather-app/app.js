@@ -7,17 +7,17 @@ if (!cityName) {
   return console.log('City name must be provided')
 }
 
-geocode(cityName, (error, location) => {
+geocode(cityName, (error, { latitude, longitude, name: locationName }) => {
   if (error) {
     return console.log(error)
   }
 
-  forecast(location.latitude, location.longitude, (error, forecast) => {
+  forecast(latitude, longitude, (error, forecast) => {
     if (error) {
       return console.log(error)
     }
 
-    console.log(location.name)
+    console.log(locationName)
     console.log(forecast)
   })
 })
