@@ -7,11 +7,6 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 
 app.use(express.static(publicDirectoryPath))
 
-// add a route for express
-app.get('', (req, res) => {
-  res.send('<h1>Welcome</h1>')
-})
-
 app.get('/help', (req, res) => {
   res.send('Help Page')
 })
