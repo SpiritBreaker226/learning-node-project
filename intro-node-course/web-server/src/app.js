@@ -4,15 +4,25 @@ const app = express()
 
 // add a route for express
 app.get('', (req, res) => {
-  res.send('Hello express!')
+  res.send('<h1>Weather</h1>')
 })
 
 app.get('/help', (req, res) => {
-  res.send('Help page')
+  res.send({
+    name: 'Jason',
+    age: 27,
+  })
 })
 
 app.get('/about', (req, res) => {
-  res.send('About page')
+  res.send([
+    {
+      name: 'Jason',
+    },
+    {
+      name: 'Jackie',
+    },
+  ])
 })
 
 app.get('/weather', (req, res) => {
