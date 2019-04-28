@@ -4,29 +4,22 @@ const app = express()
 
 // add a route for express
 app.get('', (req, res) => {
-  res.send('<h1>Weather</h1>')
+  res.send('<h1>Welcome</h1>')
 })
 
 app.get('/help', (req, res) => {
-  res.send({
-    name: 'Jason',
-    age: 27,
-  })
+  res.send('Help Page')
 })
 
 app.get('/about', (req, res) => {
-  res.send([
-    {
-      name: 'Jason',
-    },
-    {
-      name: 'Jackie',
-    },
-  ])
+  res.send('<h1>About</h1>')
 })
 
 app.get('/weather', (req, res) => {
-  res.send('Show Wather')
+  res.send({
+    forecast: 'It is currently 50 degrees out',
+    localion: 'New York',
+  })
 })
 
 // start server and listen on a port
