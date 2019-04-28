@@ -22,6 +22,12 @@ app.get('/about', (req, res) => {
   })
 })
 
+app.get('/help', (req, res) => {
+  res.render('help', {
+    message: 'This is some helpful text.',
+  })
+})
+
 app.get('/weather', (req, res) => {
   res.send({
     forecast: 'It is currently 50 degrees out',
