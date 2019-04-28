@@ -3,17 +3,9 @@ const express = require('express')
 
 const app = express()
 
-// shows the path of the current folder
-console.log(__dirname)
+const publicDirectoryPath = path.join(__dirname, '../public')
 
-// shows the path of the current file
-console.log(__filename)
-
-// shows how to change the path
-console.log(path.join(__dirname, '..'))
-
-// shows how to change the path to another folder
-console.log(path.join(__dirname, '../public'))
+app.use(express.static(publicDirectoryPath))
 
 // add a route for express
 app.get('', (req, res) => {
