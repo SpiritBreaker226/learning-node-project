@@ -48,11 +48,19 @@ app.get('/weather', (req, res) => {
 })
 
 app.get('/help/*', (req, res) => {
-  res.send('Help article not found')
+  res.render('404', {
+    errorMessage: 'Help article not found',
+    title: '404 Help',
+    name: 'Jason Stathopulos',
+  })
 })
 
 app.get('*', (req, res) => {
-  res.send('My 404 Page')
+  res.render('404', {
+    errorMessage: 'Page not found',
+    title: '404',
+    name: 'Jason Stathopulos',
+  })
 })
 
 // start server and listen on a port
