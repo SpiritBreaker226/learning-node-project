@@ -1,0 +1,33 @@
+body {
+  color: #333;
+  font-family: arial;
+  max-width: 30em;
+  margin: 0 auto;
+  padding: 0 2em;
+}
+
+header {
+  margin: 2em 0 3em;
+}
+
+header a {
+  color: #888;
+  margin-right: 1em;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 64px;
+  margin-bottom: 0.3em;
+}
+
+footer {
+  color: #888;
+  border-top: 0.1em solid #EEE;
+  margin-top: 1em;
+  padding: 2em 0;
+}
+
+.portrait {
+  width: 30em;
+}
