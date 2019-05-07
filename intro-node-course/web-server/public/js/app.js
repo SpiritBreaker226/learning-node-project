@@ -1,8 +1,13 @@
 console.log('Client side JavaScript file is loaded!')
 
-fetch('http://puzzle.mead.io/puzzle')
+fetch('/weather?city_name=boston')
   .then((res) => {
-    res.json().then((data) => {
-      console.log(data)
+    res.json().then(({ error, forecast, location, address }) => {
+      if (error) {
+        return console.log(error)
+      }
+
+      console.log(forecast)
+      console.log(location)
     })
   })
