@@ -1,6 +1,12 @@
-const greeter = (name = 'World') => {
+const user = {
+  name: 'Jason',
+  age: 27,
+  location: 'Montreal',
+}
+
+const greeter = ({ name = 'World' } = {}) => {
   console.log(`Hello ${name}`)
 }
 
-greeter('Jason')
+greeter(user)
 greeter()
