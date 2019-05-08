@@ -11,3 +11,7 @@ fetch('/weather?city_name=boston')
       console.log(location)
     })
   })
+
+const weatherForm = document.querySelector('form')
+
+weatherForm.addEventListener('submit', () => { console.log('testing') })
