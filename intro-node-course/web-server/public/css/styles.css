@@ -36,6 +36,21 @@ footer {
   padding: 2em 0;
 }
 
+input {
+  border: 0.2em solid #CCC;
+  padding: 0.7em;
+}
+
+button {
+  cursor: pointer;
+  border: 0.1em solid #888;
+  background: #888;
+  color: #FFF;
+  padding: 0.7em;
+}
+
 .portrait {
   width: 30em;
 }
+
+
