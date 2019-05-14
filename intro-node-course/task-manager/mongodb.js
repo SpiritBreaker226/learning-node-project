@@ -13,5 +13,11 @@ MongoClient.connect(
     }
 
     const db = client.db(databaseName)
+
+    db.collection('users')
+      .insertOne({
+        name: 'Jason',
+        age: 30,
+      })
   }
 )
