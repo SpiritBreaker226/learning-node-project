@@ -13,38 +13,27 @@ MongoClient.connect(
     }
 
     const db = client.db(databaseName)
-    const data = {
-      name: 'Jason',
-      age: 30,
-    }
 
-    db.collection('users')
-      .insertOne(data, (error, result) => {
+    db.collection('tasks')
+      .insertMany([
+        {
+          description: 'Add insertMany',
+          completed: false,
+        },
+        {
+          description: 'Add Fields',
+          completed: true,
+        },
+        {
+          description: 'Run Script',
+          completed: false,
+        },
+      ], (error, result) => {
         if (error) {
-          return console.log('Unable to intert user')
+          console.log('Unable to insert task')
         }
 
         console.log(result.ops)
       })
-
-    db.collection('users')
-      .insertMany([
-        {
-          name: 'Bob',
-          age: 25,
-        },
-        {
-          name: 'James',
-          age: 37,
-        },
-      ],
-        (error, result) => {
-          if (error) {
-            return console.log('Unable to insert documents!')
-          }
-
-          console.log(result.ops)
-        }
-      )
   }
 )
