@@ -13,11 +13,18 @@ MongoClient.connect(
     }
 
     const db = client.db(databaseName)
+    const data = {
+      name: 'Jason',
+      age: 30,
+    }
 
     db.collection('users')
-      .insertOne({
-        name: 'Jason',
-        age: 30,
+      .insertOne(data, (error, result) => {
+        if (error) {
+          return console.log('Unable to intert user')
+        }
+
+        console.log(result.ops)
       })
   }
 )
