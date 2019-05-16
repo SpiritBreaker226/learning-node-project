@@ -26,5 +26,25 @@ MongoClient.connect(
 
         console.log(result.ops)
       })
+
+    db.collection('users')
+      .insertMany([
+        {
+          name: 'Bob',
+          age: 25,
+        },
+        {
+          name: 'James',
+          age: 37,
+        },
+      ],
+        (error, result) => {
+          if (error) {
+            return console.log('Unable to insert documents!')
+          }
+
+          console.log(result.ops)
+        }
+      )
   }
 )
