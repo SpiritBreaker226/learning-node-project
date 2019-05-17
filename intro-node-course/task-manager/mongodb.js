@@ -12,5 +12,16 @@ MongoClient.connect(
     }
 
     const db = client.db(databaseName)
+    // _id: new ObjectID('5cdcbac16a50e0b78b040f1a') or
+    db.collection('users')
+      .findOne({ name: 'Bob' },
+        (error, user) => {
+          if (error) {
+            return console.log('Unable to Fetch')
+          }
+
+          console.log(user)
+        }
+      )
   }
 )
