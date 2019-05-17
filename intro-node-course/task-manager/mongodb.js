@@ -23,5 +23,15 @@ MongoClient.connect(
           console.log(user)
         }
       )
+
+    db.collection('users')
+      .find({ age: 30 })
+      .toArray((error, users) => {
+        if (error) {
+          return console.log('Unable to Fetch Users')
+        }
+
+        console.log(users)
+      })
   }
 )
