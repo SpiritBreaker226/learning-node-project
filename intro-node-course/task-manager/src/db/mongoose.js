@@ -20,3 +20,25 @@ const User = mongoose.model(
     }
   }
 )
+
+const Task = mongoose.model(
+  'Task',
+  {
+    description: {
+      type: String,
+    },
+    completed: {
+      type: Boolean,
+    }
+  }
+)
+
+const task = new Task({
+  description: 'create API',
+  completed: false,
+})
+
+task
+  .save()
+  .then(() => console.log(task))
+  .catch((error) =>  console.log('Error', error))
