@@ -13,12 +13,20 @@ MongoClient.connect(
 
     const db = client.db(databaseName)
 
-    db.collection('users')
-      .updateOne({
-        _id: new ObjectID('5ce1740601dee880d34591aa'),
-      }, {
-        $set: { age: 39 }
-      })
+    // db.collection('users')
+    //   .updateOne({
+    //     _id: new ObjectID('5ce1740601dee880d34591aa'),
+    //   }, {
+    //     $inc: { age: 1 }
+    //   })
+    //   .then((result) => { console.log(result) })
+    //   .catch((error) => { console.log('Unable to update') })
+
+    db.collection('tasks')
+      .updateMany(
+        { completed: false },
+        { $set: { completed: true } },
+      )
       .then((result) => { console.log(result) })
       .catch((error) => { console.log('Unable to update') })
   }
