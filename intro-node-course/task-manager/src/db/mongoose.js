@@ -32,13 +32,3 @@ const Task = mongoose.model(
     }
   }
 )
-
-const task = new Task({
-  description: 'create API',
-  completed: false,
-})
-
-task
-  .save()
-  .then(() => console.log(task))
-  .catch((error) =>  console.log('Error', error))
