@@ -51,17 +51,6 @@ const User = mongoose.model(
   }
 )
 
-const user = new User({
-  name: 'Ray',
-  email: 'ray@example.com',
-  password: ' *pass12345* ',
-})
-
-user
-  .save()
-  .then(() => console.log(user))
-  .catch((error) => console.log('Error!', error))
-
 const Task = mongoose.model(
   'Task',
   {
