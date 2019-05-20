@@ -65,13 +65,3 @@ const Task = mongoose.model(
     }
   }
 )
-
-const task = new Task({
-  description: ' Add Validation '
-})
-
-task
-  .save()
-  .then(() => console.log(task))
-  .catch((error) =>  console.log('Error', error))
-
