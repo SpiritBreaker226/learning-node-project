@@ -40,6 +40,27 @@ app.get('/users', (req, res) => {
     })
 })
 
+app.get('/users/:id', (req, res) => {
+  const { id: _id } = req.params
+
+  User
+    .findById(_id)
+    .then((user) => {
+      if (user) {
+        return res.send(user)
+      }
+
+      res
+        .status(404)
+        .send()
+    })
+    .catch(() => {
+      res
+        .status(500)
+        .send()
+    })
+})
+
 app.post('/tasks', (req, res) => {
   const task = new Task(req.body)
 
