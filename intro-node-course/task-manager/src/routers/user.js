@@ -1,4 +1,5 @@
 const express = require('express')
+
 const User = require('../models/user')
 
 const router = new express.Router()
@@ -23,8 +24,9 @@ router.post('/users/login', async (req, res) => {
   try {
     const { email, password } = req.body
     const user = await User.findByCredentials(email, password)
+    const token = await user.generateAuthToken()
 
-    res.send(user)
+    res.send({ user, token })
   } catch (error) {
     res
       .status(400)
