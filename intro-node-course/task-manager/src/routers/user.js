@@ -38,7 +38,22 @@ router.post('/users/login', async (req, res) => {
 
 router.post('/users/logout', auth, async (req, res) => {
   try {
-    req.user.tokens = req.user.tokens.filter(token => req.token !== token.token)
+    req.user.tokens = (
+      req.user.tokens.filter(token => req.token !== token.token)
+    )
+
+    await req.user.save()
+
+    res.send()
+  } catch (error) {
+    res.status(500)
+       .send()
+  }
+})
+
+router.post('/users/logoutAll', auth, async (req, res) => {
+  try {
+    req.user.tokens = []
 
     await req.user.save()
 
