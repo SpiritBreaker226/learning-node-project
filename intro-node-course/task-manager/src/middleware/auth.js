@@ -11,6 +11,7 @@ const auth = async(req, res, next) => {
     })
 
     if (user) {
+      req.token = token
       req.user = user
       return next()
     }
