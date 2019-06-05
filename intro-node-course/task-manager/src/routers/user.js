@@ -14,7 +14,7 @@ router.post('/users', async (req, res) => {
 
     res
       .status(201)
-      .send({ user: user.getPublicProfile(), token })
+      .send({ user, token })
   } catch(error) {
     res
       .status(400)
@@ -28,7 +28,7 @@ router.post('/users/login', async (req, res) => {
     const user = await User.findByCredentials(email, password)
     const token = await user.generateAuthToken()
 
-    res.send({ user: user.getPublicProfile(), token })
+    res.send({ user, token })
   } catch (error) {
     res
       .status(400)
