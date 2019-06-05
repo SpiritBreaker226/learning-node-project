@@ -66,26 +66,6 @@ router.post('/users/logoutAll', auth, async (req, res) => {
 
 router.get('/users/me', auth, async (req, res) => { res.send(req.user) })
 
-router.get('/users/:id', async (req, res) => {
-  const { id: _id } = req.params
-
-  try {
-    const user = await User.findById(_id)
-
-    if (user) {
-      return res.send(user)
-    }
-
-    res
-      .status(404)
-      .send()
-  } catch(error) {
-    res
-      .status(500)
-      .send()
-  }
-})
-
 router.patch('/users/:id', async (req, res) => {
   const updates = Object.keys(req.body)
   const allowedFields = ['name', 'email', 'password', 'age']
