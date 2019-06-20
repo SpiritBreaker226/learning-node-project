@@ -96,6 +96,26 @@ router.post(
 
 router.get('/users/me', auth, async (req, res) => { res.send(req.user) })
 
+router.get('/users/:id/avatar', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id)
+
+    if (user && user.avatar) {
+      return (
+        res
+          .set('Content-Type', 'image/jpg')
+          .send(user.avatar)
+      )
+    }
+
+    throw new Error()
+  } catch (error) {
+    res
+      .status(404)
+      .send()
+  }
+})
+
 router.patch('/users/me', auth, async (req, res) => {
   const updates = Object.keys(req.body)
   const allowedFields = ['name', 'email', 'password', 'age']
