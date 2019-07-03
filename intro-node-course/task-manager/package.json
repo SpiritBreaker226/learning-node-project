@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "env-cmd": "^9.0.3",
+    "faker": "github:marak/faker.js#master",
     "jest": "^24.8.0",
     "nodemon": "^1.19.0",
     "supertest": "^4.0.2"
