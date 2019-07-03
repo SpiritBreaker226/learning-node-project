@@ -28,3 +28,10 @@ test('Should convert 0 C to 32 F', () => {
   expect(temporary).toBe(32)
 })
 
+test('Async test demo', (done) => {
+  setTimeout(() => {
+    expect(1).toBe(1)
+
+    done()
+  }, 2000)
+})
