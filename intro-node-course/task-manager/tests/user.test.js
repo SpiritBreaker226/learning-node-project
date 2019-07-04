@@ -1,13 +1,20 @@
 const request = require('supertest')
+const jwt = require('jsonwebtoken')
 const faker = require('faker')
+const mongoose = require('mongoose')
 
 const app = require('../src/app')
 const User = require('../src/models/user')
 
+const userOneId = new mongoose.Types.ObjectId()
 const userOne = {
+  _id: userOneId,
   name:faker.name.findName(),
   email: faker.internet.email(),
   password: faker.internet.password(),
+  tokens: [{
+    token: jwt.sign({ _id: userOneId }, process.env.JWT_SERECT)
+  }],
 }
 
 beforeEach(async () => {
@@ -34,7 +41,7 @@ test('Should login existing user', async () => {
       email: userOne.email,
       password: userOne.password,
     })
-    ,expect(200)
+    .expect(200)
 })
 
 test('Should not login nonexistent user', async () => {
