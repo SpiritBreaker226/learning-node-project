@@ -24,14 +24,28 @@ beforeEach(async () => {
 })
 
 test('Should signup a new user', async () => {
-  await request(app)
+  const userInfo = {
+    name: 'Jason',
+    email: 'jason@example.com',
+  }
+  const password = faker.internet.password()
+
+  const res = await request(app)
     .post('/users')
-    .send({
-      name: 'Jason',
-      email: 'jason@example.com',
-      password: 'mypass777!',
-    })
+    .send({ ...userInfo, password })
     .expect(201)
+
+  // Assert that the database was changed correctly
+  const user = await User.findById(res.body.user._id)
+  expect(user).not.toBeNull()
+
+  // Assertions about the response
+  expect(res.body).toMatchObject({
+    user: { ...userInfo },
+    token: user.tokens[0].token,
+  })
+
+  expect(user.password).not.toBe(password)
 })
 
 test('Should login existing user', async () => {
