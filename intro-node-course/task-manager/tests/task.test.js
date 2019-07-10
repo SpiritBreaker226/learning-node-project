@@ -6,8 +6,10 @@ const Task = require('../src/models/task')
 
 const {
   setupDatabase,
+  taskOne,
   userOne,
   userOneId,
+  userTwo,
 } = require('./fixtures/db')
 
 beforeEach(setupDatabase)
@@ -36,4 +38,16 @@ test('Should get all tasks for user one', async () => {
     .expect(200)
 
   expect(res.body.length).toBe(2)
+})
+
+test('Should not delete other users tasks', async () => {
+  await request(app)
+    .delete(`/tasks/${taskOne._id}`)
+    .set('Authorization', `Bearer ${userTwo.tokens[0].token}`)
+    .send()
+    .expect(404)
+
+  task = await Task.findById(taskOne._id)
+
+  expect(task).not.toBeNull()
 })
