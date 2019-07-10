@@ -36,6 +36,22 @@ test('Should signup a new user', async () => {
   expect(user.password).not.toBe(password)
 })
 
+test('Should not signup user with invalid name/email/password', async () => {
+  const userInfo = {
+    name: faker.name.findName(),
+    email: faker.internet.email(),
+    password: '123',
+  }
+
+  await request(app)
+    .post('/users')
+    .send({ ...userInfo })
+    .expect(400)
+
+  const user = await User.findOne({ email: userInfo.email })
+  expect(user).toBeNull()
+})
+
 test('Should login existing user', async () => {
   const res = await request(app)
     .post('/users/login')
@@ -130,5 +146,20 @@ test('Should not update invalid user fields', async () => {
     .patch('/users/me')
     .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
     .send({ location: faker.address.city() })
+    .expect(400)
+})
+
+test('Should not update user if unauthenticated', async () => {
+  await request(app)
+    .patch('/users/me')
+    .send({ name: faker.name.findName() })
+    .expect(401)
+})
+
+test('Should not update user with invalid name/email/password', async () => {
+  await request(app)
+    .patch('/users/me')
+    .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
+    .send({ password: '321' })
     .expect(400)
 })
