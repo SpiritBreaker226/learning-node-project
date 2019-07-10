@@ -27,3 +27,13 @@ test('Should create task for user', async () => {
 
   expect(res.body).toMatchObject({ ...taskInfo, owner: userOneId.toString() })
 })
+
+test('Should get all tasks for user one', async () => {
+  const res = await request(app)
+    .get('/tasks')
+    .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
+    .send()
+    .expect(200)
+
+  expect(res.body.length).toBe(2)
+})
