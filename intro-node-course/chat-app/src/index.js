@@ -16,6 +16,10 @@ app.use(express.json())
 
 app.use(express.static(publicDirectoryPath))
 
+io.on('connection', () => {
+  console.log('New WebSocket connection')
+})
+
 server.listen(port, () => {
   console.log(`Server is up on ${port}`)
 })
