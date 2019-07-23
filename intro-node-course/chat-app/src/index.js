@@ -16,17 +16,8 @@ app.use(express.json())
 
 app.use(express.static(publicDirectoryPath))
 
-let count = 0
-
 io.on('connection', (socket) => {
   console.log('New WebSocket connection')
-
-  socket.emit('countUpdated', count)
-
-  socket.on('increment', () => {
-    count++
-    io.emit('countUpdated', count)
-  })
 })
 
 server.listen(port, () => {
