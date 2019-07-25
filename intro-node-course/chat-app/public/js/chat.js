@@ -26,6 +26,8 @@ document.querySelector('#send-location').addEventListener('click', () => {
   navigator.geolocation.getCurrentPosition(({ coords }) => {
     const { latitude, longitude } = coords
 
-    socket.emit('sendLocation', { latitude, longitude })
+    socket.emit('sendLocation', { latitude, longitude }, () => {
+      console.log('Location shared!')
+    })
   })
 })
