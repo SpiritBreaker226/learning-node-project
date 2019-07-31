@@ -37,7 +37,13 @@ const removeUser = (socketId) => {
   return { error: 'User not found' }
 }
 
+const getUser = socketId => users.find(user => user.socketId === socketId)
+
+const getUsersInRoom = room => users.filter(user => user.room === room)
+
 module.exports = {
   addUser,
   removeUser,
+  getUser,
+  getUsersInRoom,
 }
