@@ -27,4 +27,17 @@ const addUser = ({ socketId, username, room }) => {
   return { user: newUser }
 }
 
-module.exports = { addUser }
+const removeUser = (socketId) => {
+  const index = users.findIndex(user => user.socketId === socketId)
+
+  if (index >= 0) {
+    return users.splice(index, 1)[0]
+  }
+
+  return { error: 'User not found' }
+}
+
+module.exports = {
+  addUser,
+  removeUser,
+}
