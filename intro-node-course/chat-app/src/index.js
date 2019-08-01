@@ -13,6 +13,7 @@ const {
 const {
   addUser,
   removeUser,
+  getUser,
 } = require('./utils/users')
 
 const app = express()
@@ -56,13 +57,17 @@ io.on('connection', (socket) => {
       return callback('profane is not allowed!')
     }
 
-    io.emit('message', generateMessage(message))
+    const user = getUser(socket.id)
+
+    io.to(user.room).emit('message', generateMessage(message))
 
     callback()
   })
 
   socket.on('sendLocation', ({ latitude, longitude }, callback) => {
-    io.emit(
+    const user = getUser(socket.id)
+
+    io.to(user.room).emit(
       'locationMessage',
       generateLocationMessage(`http://maps.google.com?q=${latitude},${longitude}`)
     )
