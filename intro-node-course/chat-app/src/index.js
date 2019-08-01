@@ -14,6 +14,7 @@ const {
   addUser,
   removeUser,
   getUser,
+  getUsersInRoom,
 } = require('./utils/users')
 
 const app = express()
@@ -69,7 +70,10 @@ io.on('connection', (socket) => {
 
     io.to(user.room).emit(
       'locationMessage',
-      generateLocationMessage(`http://maps.google.com?q=${latitude},${longitude}`)
+      generateLocationMessage(
+        user.username,
+        `http://maps.google.com?q=${latitude},${longitude}`
+      )
     )
 
     callback()
