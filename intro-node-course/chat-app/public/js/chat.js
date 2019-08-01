@@ -29,7 +29,13 @@ socket.on('locationMessage', (message) => {
   $messages.insertAdjacentHTML('beforeend', html)
 })
 
-socket.emit('join', { username, room })
+socket.emit('join', { username, room }, (error) => {
+  if(error) {
+    alert(error)
+
+    location.href = '/'
+  }
+})
 
 $messageForm.addEventListener('submit',  (e) => {
   e.preventDefault()
