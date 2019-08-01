@@ -16,7 +16,13 @@
 
       <section class="compose">
         <form id="message-form">
-          <input placeholder="Message" name="message"></input>
+          <input
+            placeholder="Message"
+            name="message"
+            autocomplete="off"
+            required
+          />
+
           <button>Send</button>
         </form>
         <button id="send-location">Send location</button>
