@@ -4,8 +4,11 @@ const typeDefs = `
   type Query {
     hello: String!
     name: String!
+    location: String!
+    bio: String!
   }
 `
+
 const resolvers = {
   Query: {
     hello() {
@@ -13,7 +16,13 @@ const resolvers = {
     },
     name() {
       return 'Jason'
-    }
+    },
+    location() {
+      return 'Montreal'
+    },
+    bio() {
+      return 'There is no bio'
+    },
   }
 }
 
