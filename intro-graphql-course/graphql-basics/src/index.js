@@ -3,12 +3,16 @@ import { GraphQLServer } from 'graphql-yoga'
 const typeDefs = `
   type Query {
     hello: String!
+    name: String!
   }
 `
 const resolvers = {
   Query: {
     hello() {
       return 'This ia my first query!'
+    },
+    name() {
+      return 'Jason'
     }
   }
 }
