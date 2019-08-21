@@ -9,6 +9,11 @@ const typeDefs = `
     age: Int!
     employed: Boolean!
     gpa: Float
+    title: String!
+    price: Float!
+    releaseYear: Int
+    rating: Float
+    inStock: Boolean!
   }
 `
 
@@ -28,6 +33,21 @@ const resolvers = {
     },
     gpa() {
       return null // to show want a non-bang is allow to do have null values
+    },
+    title() {
+      return 'My Book'
+    },
+    price() {
+      return 1.23
+    },
+    releaseYear() {
+      return null
+    },
+    rating() {
+      return 4.5
+    },
+    inStock() {
+      return false
     },
   },
 }
