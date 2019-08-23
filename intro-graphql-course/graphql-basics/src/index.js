@@ -2,6 +2,7 @@ import { GraphQLServer } from 'graphql-yoga'
 
 const typeDefs = `
   type Query {
+    me: User!
   }
 
   type User {
@@ -14,6 +15,13 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
+    me() {
+      return {
+        id: "123098",
+        name: "Jason",
+        email: "jason@example.com",
+      }
+    }
   },
 }
 
