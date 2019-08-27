@@ -25,10 +25,9 @@ const users = [
   },
 ]
 
-
 const typeDefs = `
   type Query {
-    users: [User!]!
+    users(query: String): [User!]!
     me: User!
     post: Post!
   }
@@ -50,7 +49,13 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    users(parent, args, ctx, info) {
+    users(parent, {query}, ctx, info) {
+      if(query) {
+        return users.filter((user) => (
+          user.name.toLowerCase().includes(query.toLowerCase())
+        ))
+      }
+
       return users
     },
     me() {
