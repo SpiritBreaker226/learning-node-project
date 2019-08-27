@@ -25,9 +25,31 @@ const users = [
   },
 ]
 
+const posts = [
+  {
+    id: "1",
+    title: "Deamon",
+    body: "Very Good Book",
+    published: true,
+  },
+  {
+    id: "2",
+    title: "Bad Blood",
+    body: "About Blood",
+    published: false,
+  },
+  {
+    id: "3",
+    title: "Fear and Loathing",
+    body: "Something to do with Las Vegas",
+    published: true,
+  },
+]
+
 const typeDefs = `
   type Query {
     users(query: String): [User!]!
+    posts(query: String): [Post!]!
     me: User!
     post: Post!
   }
@@ -57,6 +79,16 @@ const resolvers = {
       }
 
       return users
+    },
+    posts(parent, {query}, ctx, info) {
+      if (query) {
+        return posts.filter((post) => (
+          post.title.toLowerCase().includes(query.toLowerCase()) ||
+          post.body.toLowerCase().includes(query.toLowerCase())
+        ))
+      }
+
+      return posts
     },
     me() {
       return {
