@@ -1,7 +1,34 @@
 import { GraphQLServer } from 'graphql-yoga'
 
+const users = [
+  {
+    id: "1",
+    name: "Jason",
+    email: "jason@example.com",
+  },
+  {
+    id: "2",
+    name: "Jade",
+    email: "jade@example.com",
+    age: 25,
+  },
+  {
+    id: "3",
+    name: "Bill",
+    email: "bill@example.com",
+    age: 35,
+  },
+  {
+    id: "4",
+    name: "Sarah",
+    email: "sarah@example.com",
+  },
+]
+
+
 const typeDefs = `
   type Query {
+    users: [User!]!
     me: User!
     post: Post!
   }
@@ -23,6 +50,9 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
+    users(parent, args, ctx, info) {
+      return users
+    },
     me() {
       return {
         id: "123098",
