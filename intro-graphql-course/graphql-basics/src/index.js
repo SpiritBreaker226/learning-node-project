@@ -31,18 +31,21 @@ const posts = [
     title: "Deamon",
     body: "Very Good Book",
     published: true,
+    author: "1",
   },
   {
     id: "2",
     title: "Bad Blood",
     body: "About Blood",
     published: false,
+    author: "2",
   },
   {
     id: "3",
     title: "Fear and Loathing",
     body: "Something to do with Las Vegas",
     published: true,
+    author: "4",
   },
 ]
 
@@ -66,6 +69,7 @@ const typeDefs = `
     title: String!
     body: String!
     published: Boolean!
+    author: User!
   }
 `
 
@@ -104,7 +108,13 @@ const resolvers = {
         body: "Too Long",
         published: true,
       }
-    }
+    },
+  },
+  Post: {
+    author(parent, args, ctx, info) {
+      // parent is the valuable being called
+      return users.find(user => user.id === parent.author)
+    },
   },
 }
 
